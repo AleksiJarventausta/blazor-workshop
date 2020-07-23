@@ -1,10 +1,10 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace BlazingPizza.Server
 {
@@ -56,6 +56,7 @@ namespace BlazingPizza.Server
         [HttpPost]
         public async Task<ActionResult<int>> PlaceOrder(Order order)
         {
+            await Task.Delay(5000);
             order.CreatedTime = DateTime.Now;
             order.DeliveryLocation = new LatLong(51.5001, -0.1239);
             // order.UserId = GetUserId();
